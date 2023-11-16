@@ -20,18 +20,30 @@ public class Main {
 
             int x = 1;
 
+            int positiveRange = 0;
+            int negativeRange = 0;
+
             switch (n) {
                 case 1:
 
                     x = 20;
+
+                    positiveRange = 2;
+                    negativeRange = -2;
                     break;
                 case 2:
 
                     x = 50;
+
+                    positiveRange = 5;
+                    negativeRange = -5;
                     break;
                 case 3:
 
                     x = 100;
+
+                    positiveRange = 10;
+                    negativeRange = -10;
                     break;
             }
 
@@ -40,7 +52,7 @@ public class Main {
             System.out.println("\nLet's get started!");
             System.out.print(Constants.MESSAGE);
 
-            int attempts = 0;
+            int attempts = 1;
 
             int number = Integer.parseInt(scanner.nextLine());
 
@@ -48,36 +60,7 @@ public class Main {
 
                 int diff = randomNumber - number;
 
-                switch (n) {
-                    case 1:
-
-                        if (diff > 0) {
-                            if (diff > 3) {
-
-                                System.out.println(Constants.TOO_LOW);
-                            } else {
-
-                                System.out.println(Constants.LOW);
-                            }
-                        } else {
-                            if (diff < -3) {
-
-                                System.out.println(Constants.TOO_HIGH);
-                            } else {
-
-                                System.out.println(Constants.HIGH);
-                            }
-                        }
-                        break;
-                    case 2:
-
-
-                        break;
-                    case 3:
-
-
-                        break;
-                }
+                checkNumber(diff, positiveRange, negativeRange);
 
                 attempts++;
 
@@ -101,6 +84,28 @@ public class Main {
             }
 
         } while (true);
+
+    }
+
+    private static void checkNumber(int diff, int positiveRange, int negativeRange) {
+
+        if (diff > 0) {
+            if (diff > positiveRange) {
+
+                System.out.println(Constants.TOO_LOW);
+            } else {
+
+                System.out.println(Constants.LOW);
+            }
+        } else {
+            if (diff < negativeRange) {
+
+                System.out.println(Constants.TOO_HIGH);
+            } else {
+
+                System.out.println(Constants.HIGH);
+            }
+        }
 
     }
 
