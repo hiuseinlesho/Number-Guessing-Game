@@ -6,95 +6,101 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(Constants.TITLE);
 
-        System.out.println("Choose difficulty level:");
-        System.out.println(Constants.DIFFICULTIES);
-
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter your choice: ");
-        int n = Integer.parseInt(scanner.nextLine());
+        do {
 
-        Random random = new Random();
+            System.out.println("Choose difficulty level:");
+            System.out.println(Constants.DIFFICULTIES);
 
-        int x = 1;
+            System.out.print("Enter your choice: ");
+            int n = Integer.parseInt(scanner.nextLine());
 
-        switch (n) {
-            case 1:
+            Random random = new Random();
 
-                x = 20;
-                break;
-            case 2:
-
-                x = 50;
-                break;
-            case 3:
-
-                x = 100;
-                break;
-        }
-
-        int randomNumber = random.nextInt(1, x);
-
-        System.out.println("\nLet's get started!");
-        System.out.print(Constants.MESSAGE);
-
-        int attempts = 0;
-
-        int number = Integer.parseInt(scanner.nextLine());
-
-        while (number != randomNumber) {
-
-            int diff = randomNumber - number;
+            int x = 1;
 
             switch (n) {
                 case 1:
 
-                    if (diff > 0) {
-                        if (diff > 3) {
-
-                            System.out.println(Constants.TOO_LOW);
-                        } else {
-
-                            System.out.println(Constants.LOW);
-                        }
-                    } else {
-                        if (diff < -3) {
-
-                            System.out.println(Constants.TOO_HIGH);
-                        } else {
-
-                            System.out.println(Constants.HIGH);
-                        }
-                    }
+                    x = 20;
                     break;
                 case 2:
 
-
+                    x = 50;
                     break;
                 case 3:
 
-
+                    x = 100;
                     break;
             }
 
-            attempts++;
+            int randomNumber = random.nextInt(1, x);
 
+            System.out.println("\nLet's get started!");
             System.out.print(Constants.MESSAGE);
 
+            int attempts = 0;
+
+            int number = Integer.parseInt(scanner.nextLine());
+
+            while (number != randomNumber) {
+
+                int diff = randomNumber - number;
+
+                switch (n) {
+                    case 1:
+
+                        if (diff > 0) {
+                            if (diff > 3) {
+
+                                System.out.println(Constants.TOO_LOW);
+                            } else {
+
+                                System.out.println(Constants.LOW);
+                            }
+                        } else {
+                            if (diff < -3) {
+
+                                System.out.println(Constants.TOO_HIGH);
+                            } else {
+
+                                System.out.println(Constants.HIGH);
+                            }
+                        }
+                        break;
+                    case 2:
+
+
+                        break;
+                    case 3:
+
+
+                        break;
+                }
+
+                attempts++;
+
+                System.out.print(Constants.MESSAGE);
+
                 number = Integer.parseInt(scanner.nextLine());
-        }
+            }
 
-        System.out.printf("Correct! You guessed the number in %d attempts.\n", attempts);
+            System.out.printf("Correct! You guessed the number in %d attempts.\n", attempts);
 
-        System.out.print("\nDo you want to play again? (yes/no): ");
+            System.out.print("\nDo you want to play again? (yes/no): ");
 
-        String answer = scanner.nextLine();
+            String answer = scanner.nextLine();
 
-        if (answer.equals("yes")) {
+            if (answer.equals("yes")) {
 
-        } else if (answer.equals("no")) {
-            System.out.println("Goodbye!");
-        }
+                System.out.println();
+            } else if (answer.equals("no")) {
+                System.out.println("Goodbye!");
+                break;
+            }
+
+        } while (true);
 
     }
 
